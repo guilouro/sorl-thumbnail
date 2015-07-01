@@ -203,8 +203,9 @@ class UrlStorage(Storage):
         return urlparse.urlunsplit((scheme, netloc, path, qs, anchor))
 
     def open(self, name, mode='rb'):
+        url = self.normalize_url(name) if settings.THUMBNAIL_NORMALIZE_URL else name
         return urlopen(
-            self.normalize_url(name),
+            url,
             None,
             settings.THUMBNAIL_URL_TIMEOUT
         )

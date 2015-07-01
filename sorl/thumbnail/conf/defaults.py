@@ -107,6 +107,9 @@ THUMBNAIL_LAZY_FILL_EMPTY = False
 # Timeout, in seconds, to use when retrieving images with urllib2
 THUMBNAIL_URL_TIMEOUT = None
 
+# Normalize external image
+THUMBNAIL_NORMALIZE_URL = True
+
 # Default width when using filters for texts
 THUMBNAIL_FILTER_WIDTH = 500
 
