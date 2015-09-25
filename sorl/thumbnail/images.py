@@ -3,6 +3,7 @@
 from __future__ import unicode_literals, division
 import os
 import re
+import urllib
 
 from django.core.files.base import File, ContentFile
 from django.core.files.storage import Storage, default_storage
@@ -203,7 +204,7 @@ class UrlStorage(Storage):
         return urlparse.urlunsplit((scheme, netloc, path, qs, anchor))
 
     def open(self, name, mode='rb'):
-        url = self.normalize_url(name) if settings.THUMBNAIL_NORMALIZE_URL else name
+        url = urllib.quote(name, safe="%/:=&?~#+!$,;'@()*[]")
         return urlopen(
             url,
             None,
